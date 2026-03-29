@@ -9,11 +9,6 @@
   --light-color: #fff;
   --font-family: 'Poppins', sans-serif;
 }
-
-h1, h2, h3, h4, h5, h6 {
-  text-align: center;
-}
-
 body {
   font-family: var(--font-family);
   margin: 0;
@@ -72,8 +67,6 @@ nav ul .cart-link a {
   font-size: 1.4rem; 
   text-decoration: none;
 }
-
-/* --- HERO SECTION --- */
 .hero {
   background-image: url("../Assets/meshbackground.jpg");
   background-size: cover;
@@ -125,6 +118,13 @@ nav ul .cart-link a {
 
 .about p {
   margin: 0.5rem 0;
+  font-weight: bold;
+}
+
+.collection-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
   font-weight: bold;
 }
 /* --- PRODUCT GRID --- */
