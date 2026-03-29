@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Cart - Krochet Kreations</title>
-  <!-- Go up one folder to reach style.css -->
   <link rel="stylesheet" href="../style.css">
   <style>
     /* Extra cart-specific styling */
@@ -25,28 +24,50 @@
 
     .cart-actions {
       display: flex;
-      justify-content: center; /* center horizontally */
-      gap: 1rem;               /* spacing between buttons */
+      justify-content: center;
+      gap: 1rem;
       margin-top: 1rem;
     }
 
     .cart-actions button {
-      flex: 0 0 auto;          /* prevent buttons from stretching */
+      flex: 0 0 auto;
       padding: 0.5rem 1rem;
+    }
+
+    /* Optional: style for toast messages */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #333;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 6px;
+      z-index: 9999;
+      animation: fadein 0.3s, fadeout 0.3s 1.7s;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeout {
+      from { opacity: 1; }
+      to { opacity: 0; }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo-container">
-      <a href="index.html">
-        <!-- Assets is outside Codes, so go up one folder -->
+      <a href="../index.html">
         <img src="../Assets/sitelogo.jpg" alt="Krochet Kreations Logo" class="logo">
       </a>
       <h1>Krochet Kreations</h1>
     </div>
     <nav>
-      <ul>
+      <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
         <li><a href="products.html">Products</a></li>
         <li><a href="checkout.html">Checkout</a></li>
@@ -54,7 +75,7 @@
         <li><a href="register.html">Register</a></li>
       </ul>
       <div class="cart-link">
-        <a href="cart.html">Your Cart🛒</a>
+        <a href="cart.html">Your Cart 🛒</a>
       </div>
     </nav>
   </header>
@@ -65,7 +86,7 @@
     <table id="cartTable">
       <thead>
         <tr>
-          <th></th> <!-- new empty column for summary -->
+          <th>Action</th>
           <th>Item</th>
           <th>Price</th>
           <th>Quantity</th>
@@ -74,11 +95,7 @@
       </thead>
     
       <tbody id="cartBody">
-        <!-- Default placeholder row -->
-        <tr>
-          <td></td>
-
-        </tr>
+        <!-- JS will populate rows here -->
       </tbody>
     
       <tfoot>
@@ -97,7 +114,6 @@
       </tfoot>
     </table>
     
-
     <div class="cart-actions">
       <button id="clear">Clear All</button>
       <button id="continue">Continue Shopping</button>
@@ -109,7 +125,6 @@
     <p>&copy; 2026 Krochet Kreations</p>
   </footer>
 
-  <!-- Go up one folder to reach script.js -->
   <script src="../script.js"></script>
 </body>
 </html>
