@@ -1,71 +1,115 @@
-// Update cart display (Cart page)
-function updateCart() {
-  const cartTableBody = document.querySelector("#cartTable tbody");
-  if (!cartTableBody) return; // Only run on cart.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cart - Krochet Kreations</title>
+  <!-- Go up one folder to reach style.css -->
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    /* Extra cart-specific styling */
+    #cartTable {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
 
-  cartTableBody.innerHTML = "";
-  let total = 0;
+    #cartTable th, #cartTable td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      text-align: center;
+    }
 
-  if (cart.length === 0) {
-    // Show placeholder row when cart is empty
-    cartTableBody.innerHTML = `<tr><td colspan="4">Your cart is empty</td></tr>`;
-  } else {
-    cart.forEach((item, index) => {
-      // --- Validation ---
-      if (typeof item.price !== "number" || isNaN(item.price)) {
-        item.price = 0;
-      }
-      if (typeof item.quantity !== "number" || item.quantity < 1) {
-        item.quantity = 1;
-      }
+    #cartTable th {
+      background-color: #f5f5f5;
+    }
 
-      let subtotal = item.price * item.quantity;
-      total += subtotal;
+    .cart-actions {
+      display: flex;
+      justify-content: center; /* center horizontally */
+      gap: 1rem;               /* spacing between buttons */
+      margin-top: 1rem;
+    }
 
-      cartTableBody.innerHTML += `
+    .cart-actions button {
+      flex: 0 0 auto;          /* prevent buttons from stretching */
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <a href="index.html">
+        <!-- Assets is outside Codes, so go up one folder -->
+        <img src="../Assets/sitelogo.jpg" alt="Krochet Kreations Logo" class="logo">
+      </a>
+      <h1>Krochet Kreations</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+      </ul>
+      <div class="cart-link">
+        <a href="cart.html">Your Cart🛒</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Your Shopping Cart</h2>
+    
+    <table id="cartTable">
+      <thead>
         <tr>
-          <td>${item.name}</td>
-          <td>$${item.price.toFixed(2)}</td>
-          <td>
-            <button class="decrease" data-index="${index}">-</button>
-            ${item.quantity}
-            <button class="increase" data-index="${index}">+</button>
-          </td>
-          <td>$${subtotal.toFixed(2)}</td>
+          <th></th> <!-- new empty column for summary -->
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
         </tr>
-      `;
-    });
-  }
+      </thead>
+    
+      <tbody id="cartBody">
+        <!-- Default placeholder row -->
+        <tr>
+          <td></td>
 
-  // --- Totals ---
-  let discount = total > 50 ? 5 : 0;
-  let tax = total * 0.1;
-  let grandTotal = total - discount + tax;
+        </tr>
+      </tbody>
+    
+      <tfoot>
+        <tr>
+          <td>Discount</td>
+          <td colspan="4" id="discount">$0</td>
+        </tr>
+        <tr>
+          <td>Tax</td>
+          <td colspan="4" id="tax">$0</td>
+        </tr>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td colspan="4" id="grandTotal"><strong>$0</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+    
 
-  document.getElementById("discount").textContent = "$" + discount.toFixed(2);
-  document.getElementById("tax").textContent = "$" + tax.toFixed(2);
-  document.getElementById("grandTotal").textContent = "$" + grandTotal.toFixed(2);
+    <div class="cart-actions">
+      <button id="clear">Clear All</button>
+      <button id="continue">Continue Shopping</button>
+      <button id="checkout">Checkout</button>
+    </div>
+  </main>
 
-  // --- Quantity controls ---
-  document.querySelectorAll(".increase").forEach(btn => {
-    btn.addEventListener("click", () => {
-      let idx = btn.getAttribute("data-index");
-      cart[idx].quantity++;
-      saveCart();
-      updateCart();
-    });
-  });
+  <footer>
+    <p>&copy; 2026 Krochet Kreations</p>
+  </footer>
 
-  document.querySelectorAll(".decrease").forEach(btn => {
-    btn.addEventListener("click", () => {
-      let idx = btn.getAttribute("data-index");
-      if (cart[idx].quantity > 1) {
-        cart[idx].quantity--;
-      } else {
-        cart.splice(idx, 1); // remove item if quantity goes to 0
-      }
-      saveCart();
-      updateCart();
-    });
-  });
-}
+  <!-- Go up one folder to reach script.js -->
+  <script src="../script.js"></script>
+</body>
+</html>
