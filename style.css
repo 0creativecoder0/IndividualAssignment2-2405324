@@ -153,6 +153,23 @@ main {
   margin-bottom: 1rem;
 }
 
+.product button {
+  display: block;
+  margin: 1rem auto 0 auto;
+  background: var(--secondary-color);
+  color: var(--dark-color);
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.product button:hover {
+  background: var(--primary-color);
+}
+
 /* Flexbox layout for products */
 main {
   display: flex;
