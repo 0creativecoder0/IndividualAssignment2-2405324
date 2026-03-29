@@ -10,6 +10,10 @@
   --font-family: 'Poppins', sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
 body {
   font-family: var(--font-family);
   margin: 0;
@@ -123,13 +127,12 @@ nav ul .cart-link a {
   margin: 0.5rem 0;
   font-weight: bold;
 }
-
 /* --- PRODUCT GRID --- */
 main {
   padding: 2rem;
-  display: grid;                         /* switch to grid layout */
-  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
-  gap: 2rem;                             /* spacing between items */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
 
 .product {
